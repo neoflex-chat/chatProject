@@ -8,38 +8,40 @@
   padding: 110px 60px 0px 60px;
 
   .chats_list {
+    max-height: calc(100vh - 110px);
+
     .search_dialog {
       width: 100%;
       height: 70px;
       background: $white;
       border-radius: 6px;
-      display:flex;
+      display: flex;
+      margin-bottom: 20px;
 
       input {
-        width: 69%;
         height: 100%;
-        padding: 10px 20px;
         @extend %medium-s18;
         border: none;
       }
 
       .select_type {
-        position:relative;
-        width: 31%;
+        position: relative;
         padding: 22px 35px 22px 36px;
-        select{
-          border:none;
+
+        select {
+          border: none;
           @extend %medium-s18;
           appearance: none;
         }
-        &::before{
-          position:absolute;
-          content:'';
-          width:16px;
-          height:16px;
-         right:30px;
-          bottom:27px;
-          background:url('../../assets/images/down.svg');
+
+        &::before {
+          position: absolute;
+          content: '';
+          width: 16px;
+          height: 16px;
+          right: 30px;
+          bottom: 27px;
+          background: url('../../assets/images/down.svg');
         }
       }
     }
@@ -71,6 +73,119 @@
 
     h2 {
       @extend %medium-s36;
+    }
+  }
+
+  .dialogs_list {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none; /* цвет дорожки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #B7BDCB; /* цвет плашки */
+      border-radius: 10px; /* закругления плашки */
+      border: none; /* padding вокруг плашки */
+    }
+
+    .active {
+      background: $light-blue;
+    }
+
+    padding-right: 10px;
+    max-height: calc(100vh - 290px);
+    overflow: hidden scroll;
+
+    .dialog_card {
+
+      background: $white;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05), 0px 2px 5px rgba(0, 0, 0, 0.05), 0px 5px 5px rgba(0, 0, 0, 0.05);
+      padding: 40px 30px;
+      border-radius: 5px;
+      max-height: 220px;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      .card_title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 17px;
+
+        .last_message_time {
+          @extend %medium-s16;
+          color: $gray;
+        }
+
+        .companion_info {
+          display: flex;
+          gap: 20px;
+
+          img {
+            width: 54px;
+            height: 54px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+
+          .companion_block {
+            display: flex;
+            flex-direction: column;
+
+            .companion_name {
+              @extend %bold-s18;
+            }
+
+            .status {
+              svg {
+                margin-right: 5px;
+              }
+
+              @extend %medium-s16;
+              color: $light-blue;
+            }
+          }
+        }
+
+      }
+
+      cursor: pointer;
+
+      .card_message {
+        display: flex;
+        justify-content: space-between;
+
+        .message_text {
+          @extend %medium-s16;
+          max-width: 450px;
+          max-height: 72px;
+          color: $gray;
+          overflow: hidden;
+        }
+
+        .messages_count {
+          align-self: center;
+
+          @extend %medium-s16;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+          width: 20px;
+          height: 20px;
+          color: white;
+          border-radius: 50%;
+          background: $pink;
+          box-shadow: 4px 4px 15px rgba(198, 27, 74, 0.05), 2px 2px 10px rgba(198, 27, 74, 0.1), 1px 1px 50px rgba(198, 27, 74, 0.15);
+
+
+        }
+      }
     }
   }
 }

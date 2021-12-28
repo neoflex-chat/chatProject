@@ -21,8 +21,8 @@ export const NavItem = (props: Link) => {
                   src={props.type}
                   className={clsx(match && s.active)}
               >
-  <img src={props.type} alt={props.title}/>
-</SVG>
+                <img src={props.type} alt={props.title}/>
+            </SVG>
             </span>
 
             <NavLink
