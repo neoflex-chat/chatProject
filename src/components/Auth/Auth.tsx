@@ -1,8 +1,6 @@
 import {
   useForm,
-  Controller,
   useController,
-  UseControllerProps,
 } from 'react-hook-form'
 import s from './Auth.module.scss'
 import { authErrors } from '../../configs/authErrors'
@@ -16,8 +14,6 @@ import {
 } from '@ant-design/icons'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import { useState } from 'react'
-import clsx from 'clsx'
 
 export const Auth = () => {
   const validationSchema = Yup.object().shape({
