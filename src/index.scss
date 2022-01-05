@@ -94,5 +94,9 @@ $menu-transition: all 0.2s ease-in-out;
   display:grid;
   grid-template-columns: 290px 1fr;
 }
+.container{
+  padding:24px;
+  max-width:1260px;
+}
 
 
