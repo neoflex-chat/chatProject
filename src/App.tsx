@@ -6,28 +6,29 @@ import './reset.css'
 import { Route, Routes } from "react-router-dom";
 import {Chats} from "./components/Chats/Chats";
 import {Auth} from "./components/Auth/Auth";
+import {useTitle} from "./hooks/useTitle";
 
 function App() {
     const store = useStore();
-
+    useTitle('NeoChat');
 
     /*    useEffect(() => {
             store.load();
         }, [])*/
     return (
-        <>
-            {/* eslint-disable-next-line react/jsx-no-undef */}
 
-
+        <div className='main_container'>
+            <SideBar/>
             <Routes>
-                <Route path="*" element={<div className='main_container'><><SideBar/><div>Hello</div></></div>}/>
-                <Route path="/chat"
-                       element={<div className='main_container'><SideBar/> <Chats /></div>}/>
-                <Route path="/auth" element={<div className='main_container'><SideBar/> <Auth/></div>} />
-            </Routes>
 
-            {/*<Chats />*/}
-        </>
+                <Route path="*" element={<><div>Hello</div></>}/>
+                <Route path="/chat"
+                       element={ <Chats />}/>
+                <Route path="/auth" element={ <Auth/>} />
+
+            </Routes>
+        </div>
+
     );
 }
 

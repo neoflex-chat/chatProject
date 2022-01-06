@@ -4,7 +4,9 @@ import './antd.scss'
 import {UserOutlined, DownOutlined, SearchOutlined} from '@ant-design/icons';
 import {Menu, Dropdown, Button, message, Input} from 'antd';
 import {DialogCard} from "./DialogCard/DialogCard";
-
+import {useTitle} from "hooks/useTitle";
+import {DialogComponent} from "./DialogComponent/DialogComponent";
+import companionAvatar from 'assets/images/Photo.jpg'
 
 const messages = [
     {
@@ -32,9 +34,8 @@ const messages = [
         name: 'Luy Robin',
         status: 'writes',
         lastMessageTime: '1 minute ago',
-        message: 'Most of its text is made up from sections 1.10.32–3 of Cicero\'s De finibus bonorum et malorum ' +
-            '(On the Boundaries of Goods and Evils; finibus may also be translated as purposes). Most of its text is made up from sections 1.10.32–3 of Cicero\'s De finibus bonorum et malorum ' +
-            '(On the Boundaries of Goods and Evils; finibus may also be translated as purposes). ',
+        message: 'Most of its text is made up from sections 1.10.32–3 of Cicero\'s De finibus bonorum et malorum ',
+
         messagesCount: 2
     },
     {
@@ -50,6 +51,7 @@ const messages = [
 ]
 
 export const Chats = () => {
+    useTitle('Chats');
     function handleMenuClick(e: any) {
         message.info('Click on menu item.');
         console.log('click', e);
@@ -73,7 +75,7 @@ export const Chats = () => {
             <div className={s.chats_list}>
                 <div className={s.top_content}>
                     <h2 className={s.medium_s36}>Chats</h2>
-                    <button>+ &nbsp;Create New Chat</button>
+                    <Button type='primary'>+ &nbsp;Create New Chat </Button>
                 </div>
 
 
@@ -104,7 +106,7 @@ export const Chats = () => {
 
             </div>
             <div className={s.user_chat}>
-                user chat
+              <DialogComponent companionName={'Nika Jerrardo'} companionLastTimeSeen={'last online 5 hours ago'} companionAvatar={companionAvatar} />
             </div>
         </div>
     )

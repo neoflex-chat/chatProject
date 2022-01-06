@@ -12,7 +12,6 @@ export const StoreContext = createContext(store);
 
 ReactDOM.render(
     <React.StrictMode>
-
         <StoreContext.Provider value={store}>
             <Router>
                 <App/>

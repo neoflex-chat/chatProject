@@ -16,7 +16,7 @@ export const NavItem = (props: Link) => {
 
     return (
         <li>
-            <span>
+            <span style={{display:'flex'}}>
               <SVG
                   src={props.type}
                   className={clsx(match && s.active)}

@@ -14,48 +14,53 @@ import {
 } from '@ant-design/icons'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-
-export const Auth = () => {
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string()
+import {useTitle} from "../../hooks/useTitle";
+const validationSchema = Yup.object().shape({
+  firstName: Yup.string()
       .required('First Name is required')
       .min(authErrors.firstName.minLength, authErrors.firstName.minLengthError)
       .max(authErrors.firstName.maxLength, authErrors.firstName.maxLengthError),
-    lastName: Yup.string()
+  lastName: Yup.string()
       .required('Last name is required')
       .min(authErrors.lastName.minLength, authErrors.lastName.minLengthError)
       .max(authErrors.lastName.maxLength, authErrors.lastName.maxLengthError),
-    login: Yup.string()
+  login: Yup.string()
       .required('Login is required')
       .min(authErrors.login.minLength, authErrors.login.minLengthError)
       .max(authErrors.login.maxLength, authErrors.login.maxLengthError),
-    password: Yup.string()
+  password: Yup.string()
       .required('Password is required')
       .min(authErrors.password.minLength, authErrors.password.minLengthError)
       .max(authErrors.password.maxLength, authErrors.password.maxLengthError),
-    confirmPassword: Yup.string()
+  confirmPassword: Yup.string()
       .required('Confirm Password is required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-    // dob: Yup.string()
-    //   .required('Date is required')
-    //   .matches(
-    //     /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
-    //     'Date of Birth must be a valid date in the format YYYY-MM-DD'
-    //   ),
-    email: Yup.string().required('Email is required').email('Email is invalid'),
-    // acceptTerms: Yup.bool().oneOf([true], 'Accept Ts & Cs is required'),
-  })
-  type FormValues = {
-    firstName: string
-    lastName: string
-    login: string
-    password: string
-    confirmPassword: string
-    email: string
-    placeholder: string
-  }
+  // dob: Yup.string()
+  //   .required('Date is required')
+  //   .matches(
+  //     /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
+  //     'Date of Birth must be a valid date in the format YYYY-MM-DD'
+  //   ),
+  email: Yup.string().required('Email is required').email('Email is invalid'),
+  // acceptTerms: Yup.bool().oneOf([true], 'Accept Ts & Cs is required'),
+})
+type FormValues = {
+  firstName: string
+  lastName: string
+  login: string
+  password: string
+  confirmPassword: string
+  email: string
+  placeholder: string
+}
+const formOptions = { resolver: yupResolver(validationSchema) }
 
-  const formOptions = { resolver: yupResolver(validationSchema) }
+export const Auth = () => {
+  useTitle('Register')
+
+
+
+
 
   const { control, handleSubmit, formState, reset } =
     useForm<FormValues>(formOptions)
