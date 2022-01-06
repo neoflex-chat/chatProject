@@ -1,0 +1,108 @@
+@import '../../index.scss';
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  box-shadow: 14.0351px 0px 25px rgba(86, 128, 248, 0.03), 35.0877px 0px 70px rgba(86, 128, 248, 0.05), 23.8596px 5.61404px 50px rgba(0, 0, 0, 0.02);
+
+  .profile_block {
+    padding-top: 87px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 85px;
+    height: 20vh;
+
+    img {
+      object-fit: cover;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    span {
+      @extend %medium-s18;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        right: -25px;
+        bottom: 2px;
+        content: '';
+        width: 19px;
+        height: 19px;
+        background: url(../../assets/images/down.svg)
+      }
+    }
+  }
+
+  .nav_bar {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    user-select: none;
+    height: 100%;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      &:last-child {
+        margin-top: auto;
+      }
+
+      .nav_item {
+        @extend %bold-s16;
+        text-decoration: none;
+        padding-left: 20px;
+        color: $gray;
+        text-transform: uppercase;
+        line-height: 19px;
+        position: relative;
+        transition: $menu-transition;
+
+        &:hover {
+          color: $hover-menu-color;
+        }
+
+        &:focus {
+          color: $light-blue;
+        }
+
+        &::before {
+          transition: $menu-transition;
+        }
+
+        &::after {
+          transition: $menu-transition;
+        }
+      }
+
+      .active {
+        position: relative;
+        color: $light-blue;
+
+        rect {
+          transition: $menu-transition;
+          fill: $light-blue;
+        }
+
+        &::after {
+          position: absolute;
+          content: '';
+          width: 3px;
+          height: 40px;
+          bottom: -10px;
+          left: -81px;
+          background: #2A8BF2;
+          box-shadow: 1px 0px 10px rgba(42, 139, 242, 0.45), 0px 0px 10px rgba(42, 139, 242, 0.55), 4px 0px 15px rgba(42, 139, 242, 0.75);
+          border-radius: 3px;
+          cursor: auto;
+        }
+      }
+    }
+  }
+}
